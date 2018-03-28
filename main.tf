@@ -1,7 +1,15 @@
 provider "aws" {
   region          = "us-east-1"
   version         = "~> 1.12"
-  profile         = "hhubris"
+}
+
+
+terraform {
+  backend "s3" {
+    bucket = "hh-terraform-up-and-running-state"
+    key = "test/s3/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 data "aws_availability_zones" "all" {}
